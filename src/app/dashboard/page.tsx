@@ -48,7 +48,7 @@ function DashboardContent() {
   const purchasedProjects = MOCK_PROJECTS.filter(p => purchasedIds.includes(p.id));
 
   const copyReferralLink = () => {
-    navigator.clipboard.writeText("https://projectverse.in/ref?code=ARJUN500");
+    navigator.clipboard.writeText("https://studentshub.in/ref?code=ARJUN500");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -314,7 +314,7 @@ function DashboardContent() {
                       <input
                         type="text"
                         readOnly
-                        value="https://projectverse.in/ref?code=ARJUN500"
+                        value="https://studentshub.in/ref?code=ARJUN500"
                         className="w-full rounded-xl border border-slate-200 bg-white p-3 pr-24 text-xs font-mono text-slate-650"
                       />
                       <button

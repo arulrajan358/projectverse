@@ -9,7 +9,7 @@ export default function SupportCenter() {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatMessage, setChatMessage] = useState("");
   const [chatHistory, setChatHistory] = useState([
-    { sender: "bot", text: "Hello! Welcome to ProjectVerse Support. How can I help you today?" }
+    { sender: "bot", text: "Hello! Welcome to StudentsHub Support. How can I help you today?" }
   ]);
 
   const handleTicketSubmit = (e: React.FormEvent) => {
@@ -158,7 +158,7 @@ export default function SupportCenter() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-slate-900">Email Support</h4>
-                  <p className="text-[10px] text-slate-500 mt-0.5">support@projectverse.in</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">support@studentshub.in</p>
                 </div>
               </div>
               <div className="flex gap-4">
@@ -167,7 +167,7 @@ export default function SupportCenter() {
                 </div>
                 <div>
                   <h4 className="text-xs font-bold text-slate-900">Quality Desk</h4>
-                  <p className="text-[10px] text-slate-500 mt-0.5">compliance@projectverse.in</p>
+                  <p className="text-[10px] text-slate-500 mt-0.5">compliance@studentshub.in</p>
                 </div>
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function SupportCenter() {
               <div className="bg-blue-600 text-white p-4 flex justify-between items-center">
                 <div className="flex items-center gap-2.5">
                   <div className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="text-xs font-bold">ProjectVerse Support Bot</span>
+                  <span className="text-xs font-bold">StudentsHub Support Bot</span>
                 </div>
                 <button
                   onClick={() => setChatOpen(false)}

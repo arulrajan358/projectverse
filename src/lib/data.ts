@@ -390,7 +390,7 @@ export const MOCK_TESTIMONIALS = [
     id: "test-1",
     name: "Arjun Verma",
     college: "VIT Vellore",
-    text: "ProjectVerse completely saved my final year project. I bought the visual defect detection kit, followed the detailed roadmap, and booked Dr. Ananya for 1:1 Viva prep. The external examiner was blown away by the live webcam dashboard. I got an A+ and landed a job at Nvidia!",
+    text: "StudentsHub completely saved my final year project. I bought the visual defect detection kit, followed the detailed roadmap, and booked Dr. Ananya for 1:1 Viva prep. The external examiner was blown away by the live webcam dashboard. I got an A+ and landed a job at Nvidia!",
     avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&auto=format&fit=crop&q=80"
   },
   {

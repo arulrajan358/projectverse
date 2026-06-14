@@ -27,7 +27,7 @@ export default function Navbar() {
             <Sparkles className="h-5.5 w-5.5" />
           </div>
           <span className="text-xl font-bold tracking-tight text-slate-900">
-            Project<span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Verse</span>
+            Students<span</span>
           </span>
         </Link>
 

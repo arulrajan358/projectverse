@@ -13,7 +13,7 @@ export default function Footer() {
                 <Sparkles className="h-4.5 w-4.5" />
               </div>
               <span className="text-lg font-bold tracking-tight text-slate-900">
-                Project<span className="text-blue-600">Verse</span>
+                Students<span</span>
               </span>
             </Link>
             <p className="text-sm text-slate-500 leading-relaxed">
@@ -76,7 +76,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-slate-500">
                 <Mail className="h-4 w-4 text-indigo-500" />
-                <span>support@projectverse.in</span>
+                <span>support@studentshub.in</span>
               </li>
             </ul>
           </div>
@@ -84,7 +84,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-slate-400">
-            &copy; {new Date().getFullYear()} ProjectVerse. All rights reserved. Built in compliance with OWASP & academic standard protocols.
+            &copy; {new Date().getFullYear()} StudentsHub. All rights reserved. Built in compliance with OWASP & academic standard protocols.
           </p>
           <div className="flex gap-6 text-xs text-slate-400">
             <Link href="/support" className="hover:underline">Terms of Service</Link>

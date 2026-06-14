@@ -32,10 +32,10 @@ export default function BlogDetails({ params }: BlogDetailsProps) {
     },
     "publisher": {
       "@type": "Organization",
-      "name": "ProjectVerse",
+      "name": "StudentsHub",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://projectverse.in/assets/logo.png"
+        "url": "https://studentshub.in/assets/logo.png"
       }
     },
     "description": post.excerpt

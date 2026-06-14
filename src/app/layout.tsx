@@ -15,20 +15,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ProjectVerse - Build Projects That Get You Hired",
+  title: "StudentsHub - Build Projects That Get You Hired",
   description: "India's largest AI-powered Student Innovation Ecosystem. Discover project ideas, buy complete project kits, get custom-built solutions, and find mentors.",
   keywords: "Final Year Projects, AI Projects, Data Science Projects, Engineering Projects, Student Projects, Machine Learning Projects, Academic Projects",
   openGraph: {
-    title: "ProjectVerse - Student Innovation Ecosystem",
+    title: "StudentsHub - Student Innovation Ecosystem",
     description: "Discover project ideas, buy complete project kits, get custom-built solutions, and learn from industry experts.",
-    url: "https://projectverse.in",
-    siteName: "ProjectVerse",
+    url: "https://studentshub.in",
+    siteName: "StudentsHub",
     locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ProjectVerse - Student Innovation Ecosystem",
+    title: "StudentsHub - Student Innovation Ecosystem",
     description: "Discover project ideas, buy complete project kits, get custom-built solutions, and learn from industry experts.",
   }
 };

@@ -38,7 +38,7 @@ class MockDb {
     findUnique: async (args?: { where: { clerkUserId?: string; email?: string } }) => {
       return {
         id: "usr-1",
-        email: "student@projectverse.in",
+        email: "student@studentshub.in",
         name: "Arjun Verma",
         role: "STUDENT"
       };

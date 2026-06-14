@@ -27,7 +27,7 @@ export default function BlogIndex() {
           <div>
             <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
               <BookOpen className="h-8 w-8 text-blue-600" />
-              ProjectVerse Blog
+              StudentsHub Blog
             </h1>
             <p className="text-sm text-slate-500 mt-1 font-medium">Insights from industry experts on building project architecture, final year defense, and landing technical placements.</p>
           </div>
