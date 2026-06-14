@@ -1,0 +1,200 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  STUDENT
+  MENTOR
+  ADMIN
+}
+
+enum ProjectType {
+  IDEA_ONLY
+  KIT_ONLY
+  FULL_PROJECT
+}
+
+enum Difficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum OrderStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum BookingStatus {
+  SCHEDULED
+  COMPLETED
+  CANCELLED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  RESOLVED
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  name          String?
+  avatar        String?
+  role          Role           @default(STUDENT)
+  clerkUserId   String         @unique
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  
+  // Relations
+  orders        Order[]
+  bookings      Booking[]      @relation("StudentBookings")
+  mentorProfile MentorProfile?
+  referralsMade Referral[]     @relation("Referrer")
+  referralsRec  Referral[]     @relation("Referred")
+  tickets       SupportTicket[]
+  reviews       Review[]
+  wishlist      Wishlist[]
+}
+
+model MentorProfile {
+  id           String        @id @default(uuid())
+  userId       String        @unique
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  specialties  String[]      // AI, ML, WebDev, Cyber Security, etc.
+  bio          String
+  company      String?
+  experienceYrs Int
+  rating       Float         @default(5.0)
+  pricingPerHr Float
+  availability Json          // Weekly schedules
+  bookings     Booking[]     @relation("MentorBookings")
+  createdAt    DateTime      @default(now())
+}
+
+model Project {
+  id             String      @id @default(uuid())
+  title          String
+  slug           String      @unique
+  description    String
+  longDesc       String      @db.Text
+  type           ProjectType @default(FULL_PROJECT)
+  price          Float       @default(0.0)
+  difficulty     Difficulty  @default(INTERMEDIATE)
+  category       String      // e.g. "Generative AI"
+  techStack      String[]    // ["Next.js", "Python", "PyTorch"]
+  estimatedHours Int
+  features       String[]
+  outcomes       String[]    // Learning outcomes
+  scope          String[]    // Future scope
+  rating         Float       @default(4.5)
+  images         String[]    // Image URLs (Cloudinary)
+  architecture   String?     // Diagram URL
+  downloads      Json        // Paths to Source Code, PPT, Documentation
+  isTrending     Boolean     @default(false)
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+  
+  // Relations
+  orderItems     OrderItem[]
+  reviews        Review[]
+  wishlists      Wishlist[]
+}
+
+model Order {
+  id             String      @id @default(uuid())
+  userId         String
+  user           User        @relation(fields: [userId], references: [id])
+  totalAmount    Float
+  paymentGateway String      // "STRIPE" or "RAZORPAY"
+  paymentId      String      @unique // Transaction/Session ID
+  status         OrderStatus @default(PENDING)
+  items          OrderItem[]
+  createdAt      DateTime    @default(now())
+}
+
+model OrderItem {
+  id        String   @id @default(uuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  price     Float
+}
+
+model Booking {
+  id           String        @id @default(uuid())
+  studentId    String
+  student      User          @relation("StudentBookings", fields: [studentId], references: [id])
+  mentorId     String
+  mentor       MentorProfile @relation("MentorBookings", fields: [mentorId], references: [id])
+  dateTime     DateTime
+  durationMins Int           @default(45)
+  meetingLink  String?
+  topic        String        // Project review, Resume, Viva prep
+  status       BookingStatus @default(SCHEDULED)
+  createdAt    DateTime      @default(now())
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  rating    Int
+  comment   String
+  createdAt DateTime @default(now())
+}
+
+model Wishlist {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  projectId String
+  project   Project  @relation(fields: [projectId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Referral {
+  id          String   @id @default(uuid())
+  referrerId  String
+  referrer    User     @relation("Referrer", fields: [referrerId], references: [id])
+  referredId  String
+  referred    User     @relation("Referred", fields: [referredId], references: [id])
+  creditsEarned Float   @default(100.0) // INR credits for next purchase
+  createdAt   DateTime @default(now())
+}
+
+model BlogPost {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  excerpt     String
+  category    String
+  image       String
+  tags        String[]
+  authorName  String
+  authorRole  String
+  publishedAt DateTime @default(now())
+  seoTitle    String?
+  seoDesc     String?
+}
+
+model SupportTicket {
+  id        String       @id @default(uuid())
+  userId    String
+  user      User         @relation(fields: [userId], references: [id])
+  subject   String
+  message   String       @db.Text
+  status    TicketStatus @default(OPEN)
+  createdAt DateTime     @default(now())
+}
